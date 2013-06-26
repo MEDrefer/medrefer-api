@@ -1,11 +1,19 @@
-medrefer-api
+The MEDrefer API
 ============
 
 The MEDrefer API allows medical applications to issue and/or accept referral letters, check their status and send reports back to the referring provider.
 
+It also supports the publishing of availability information so referring doctors can get an idea of how soon a referee they've found in a search might be able to
+
+
+
 API Sections
 ----------
-*
+The API documentation has been broken into sections - based around the resources you can interact with
+* Practitioner
+* Practice
+* Referral
+* Availability
 
 Overview
 ----------
@@ -51,7 +59,7 @@ Response Formats
 * 4xx range - Bad data provided (something you've done wrong)
 * 5xx range - Internal Server Errors (something we've done wrong)
 
-### Errors Formats
+### Error Formats
 
 We provide some additional information for errors that are caused by bad input data (4xx range HTTP response codes)
 

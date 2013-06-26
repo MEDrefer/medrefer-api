@@ -29,3 +29,35 @@ optional:
 * latitude float
 * longitude float
 * hpi_o String
+
+
+POST /api/v1/practices
+
+Headers
+X-App-Auth-Token - required
+X-Auth-Token - not required
+
+Response
+{
+    "address1": "1 Foobar Street",
+    "address2": null,
+    "city": "Fooville",
+    "created_at": "2013/01/17 00:13:20 +0000",
+    "email": null,
+    "fax": null,
+    "hpi_o": null,
+    "id": 13264,
+    "latitude": -27.290533,
+    "longitude": 152.959125,
+    "manager": null,
+    "name": "Foobar Practice",
+    "next_available": null,
+    "phone": "123456789",
+    "postcode": "1234",
+    "practitioner_id": null,
+    "provider_number": null,
+    "software": null,
+    "state": "QLD",
+    "updated_at": "2013/01/17 00:13:20 +0000",
+    "website": null
+}

@@ -1,8 +1,13 @@
 # Practitioners
 These endpoints allow you to interact with Practitioners.
 
+* [Show] (#show)
+* [Create] (#create)
+* [Search] (#search)
+* [Return Your Record] (#return-your-information)
+
 ## show
-* url: /api/v1/practitioners/:id(.:format)
+* url: `/api/v1/practitioners/:id(.:format)`
 (where url is the integer id of the practitioner that has been created).
 * method: get
 
@@ -10,8 +15,37 @@ parameters:
 
 none - the id of the practitioner to load is passed as a part of the url.
 
+URL
+
+`GET https://www.medrefer-staging.com/api/v1/practitioners/:id(.:format)`
+
+Request
+
+curl -H "X-Auth-Token: <token>" https://www.medrefer-staging.com/api/v1/practitioners/1
+
+Response
+```
+  {
+      "id": 1,
+      "title": "Dr",
+      "first_name": "GP",
+      "last_name": "Development",
+      "gender": "m",
+      "email": "daniel+development+gp@medrefer.com.au",
+      "phone": null,
+      "mobile": null,
+      "registration_number": "MNA0876",
+      "registering_body": "AHPRA",
+      "interests": "",
+      "practitioner_type": 1,
+      "auth_token": "c08f0619ba9d1a7afc63f01b89803b52"
+  }
+```
+
+
+
 ## create
-* url: /api/v1/practitioners(.:format)
+* `url: /api/v1/practitioners(.:format)`
 * method: post
 
 parameters:
@@ -43,6 +77,80 @@ optional:
 * accept_terms_at Date
 
 
+POST `/api/v1/practitioners`
+
+Headers
+X-App-Auth-Token - required
+X-Auth-Token - not required
+
+Parameters
+email - required
+first_name - required
+gender - required
+hpi_i - optional
+interests - optional
+last_name - required
+mobile - optional
+phone - optional
+practice_id - required
+practitioner_type - required (Valid options: 1 - 3 1=GP, 2=SP, 3=AH)
+registering_body - optional
+registration_number - optional
+title - optional
+
+Response
+```
+{
+    "auth_token": "cecdcefbbbbe9429a55876000aa0591b",
+    "email": "daniel+marcho@medrefer.com.au",
+    "first_name": "Marcho",
+    "gender": "M",
+    "hpi_i": null,
+    "id": 13262,
+    "interests": null,
+    "last_name": "Boom",
+    "mobile": null,
+    "phone": null,
+    "practice": {
+        "address1": "1 Foobar Street",
+        "address2": null,
+        "city": "Fooville",
+        "email": null,
+        "fax": null,
+        "hpi_o": null,
+        "id": 13261,
+        "latitude": -27.290533,
+        "longitude": 152.959125,
+        "manager": null,
+        "name": "Foobar Practice",
+        "next_available": null,
+        "phone": null,
+        "postcode": "1234",
+        "provider_number": null,
+        "software": null,
+        "state": "QLD",
+        "website": null
+    },
+    "practitioner_type": 2,
+    "registering_body": null,
+    "registration_number": null,
+    "title": null
+}
+```
+
+Errors
+Response when passing an email address which is already in the system
+```
+{
+    "errors": [
+        {
+            "message": "Practitioner already exists"
+        }
+    ]
+}
+```
+
+
 ## search
 
 params:
@@ -58,3 +166,87 @@ optional:
 * gender character (m|f)
 * telehealth boolean
 * intermediate boolean
+
+
+Parameters
+
+criteria	required	String	Search tearms
+near	required	String	Can be just a postcode or suburb + postcode in the format ", "
+within	optional	Integer	Distance from postcode provided to search for practitioners, valid distances: 5, 25 (default), 50, 100, 250
+gender	optional	String	M or F
+telehealth	optional	Boolean	true or false (default)
+intermediate	optional	Boolean	true or false (default)
+
+URL
+
+GET https://www.medrefer-staging.com/api/v1/practitioners/search(.:format)
+
+Request
+```
+curl https://www.medrefer-staging.com/api/v1/practitioners/search \
+     -H "X-Auth-Token: <token>" \
+     -H "Content-Type: application/json" \
+     -X GET
+     -d '{ "criteria": "physio", "near": "Brisbane, 4000" }'
+```
+
+Response
+```
+  [
+    {
+        "id": 2,
+        "title": "Dr",
+        "first_name": "Specialist",
+        "last_name": "Local",
+        "practitioner_type_name": "Specialist",
+        "practice": {
+            "id": 2,
+            "name": "MEDrefer",
+            "provider_number": "123456789",
+            "hpi_o": "9876543"
+        }
+    },
+    {
+        "id": 3,
+        "title": "Mr",
+        "first_name": "Allied",
+        "last_name": "Local",
+        "practitioner_type_name": "Allied",
+        "practice": {
+            "id": 3,
+            "name": "MEDrefer",
+            "provider_number": "123456789-HA",
+            "hpi_o": "987654323-A1"
+        }
+    }
+]
+```
+
+## Return your information
+
+URL
+
+GET https://www.medrefer-staging.com/api/v1/practitioners/me(.:format)
+
+Request
+
+curl -H "X-Auth-Token: <token>" https://www.medrefer-staging.com/api/v1/practitioners/me
+
+Response
+```
+  {
+      "id": 1,
+      "title": "Dr",
+      "first_name": "GP",
+      "last_name": "Development",
+      "gender": "m",
+      "email": "daniel+development+gp@medrefer.com.au",
+      "phone": null,
+      "mobile": null,
+      "registration_number": "MNA0876",
+      "registering_body": "AHPRA",
+      "interests": "",
+      "practitioner_type": 1,
+      "auth_token": "c08f0619ba9d1a7afc63f01b89803b52"
+  }
+```
