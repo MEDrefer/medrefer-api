@@ -10,10 +10,12 @@ It also supports the publishing of availability information so referring doctors
 API Sections
 ----------
 The API documentation has been broken into sections - based around the resources you can interact with
-* Practitioner
-* Practice
-* Referral
-* Availability
+* [Authentication] (#authentication)
+* Response Formats (#response-formats)
+* [Practitioners] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/practitioners.md)
+* [Practices] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/practices.md)
+* [Referrals] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/referrals.md)
+* [Availability] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/availabilities.md)
 
 Overview
 ----------
