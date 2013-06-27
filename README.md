@@ -3,15 +3,13 @@ The MEDrefer API
 
 The MEDrefer API allows medical applications to issue and/or accept referral letters, check their status and send reports back to the referring provider.
 
-It also supports the publishing of availability information so referring doctors can get an idea of how soon a referee they've found in a search might be able to
-
-
+It also supports the publishing of availability information so referring doctors can get an idea of how soon a referee they've found in a search might be able to see their patient.
 
 API Sections
 ----------
 The API documentation has been broken into sections - based around the resources you can interact with
 * [Authentication] (#authentication)
-* Response Formats (#response-formats)
+* [Response Formats] (#response-formats)
 * [Practitioners] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/practitioners.md)
 * [Practices] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/practices.md)
 * [Referrals] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/referrals.md)

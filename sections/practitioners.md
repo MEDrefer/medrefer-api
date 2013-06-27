@@ -6,8 +6,8 @@ These endpoints allow you to interact with Practitioners.
 * [Search] (#search)
 * [Return Your Record] (#return-your-information)
 
-## show
-* url: `/api/v1/practitioners/:id(.:format)`
+## Show
+* url: ```/api/v1/practitioners/:id(.:format)```
 (where url is the integer id of the practitioner that has been created).
 * method: get
 
@@ -44,8 +44,8 @@ Response
 
 
 
-## create
-* `url: /api/v1/practitioners(.:format)`
+## Create
+* url: ```/api/v1/practitioners(.:format)```
 * method: post
 
 parameters:
@@ -151,7 +151,7 @@ Response when passing an email address which is already in the system
 ```
 
 
-## search
+## Search
 
 params:
 
@@ -226,11 +226,13 @@ Response
 
 URL
 
-GET https://www.medrefer-staging.com/api/v1/practitioners/me(.:format)
+GET ```https://www.medrefer-staging.com/api/v1/practitioners/me(.:format) ```
 
 Request
-
-curl -H "X-Auth-Token: <token>" https://www.medrefer-staging.com/api/v1/practitioners/me
+```
+curl https://www.medrefer-staging.com/api/v1/practitioners/me
+    -H "X-Auth-Token: <token>"
+```
 
 Response
 ```

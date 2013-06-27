@@ -2,8 +2,8 @@
 This endpoint allows you to create a practice to be associated with a practitioner.
 Note that in V1 of the API, a practitioner can only be associated with a single practice.
 
-## create
-* url: /api/v1/practices(.:format)
+## Create
+* url: ```/api/v1/practices(.:format)```
 * method: post
 
 parameters:
@@ -37,6 +37,7 @@ Headers
 X-App-Auth-Token - required
 X-Auth-Token - not required
 
+```
 Response
 {
     "address1": "1 Foobar Street",
@@ -61,3 +62,4 @@ Response
     "updated_at": "2013/01/17 00:13:20 +0000",
     "website": null
 }
+```

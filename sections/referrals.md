@@ -1,7 +1,7 @@
 # Referrals
 
-## index
-* url: /api/v1/referrals
+## Index
+* url: ```/api/v1/referrals```
 * method: get
 
 No parameters - returns the list of referrals for the currently logged in practitioner.
@@ -9,14 +9,16 @@ No parameters - returns the list of referrals for the currently logged in practi
 
 URL
 
-GET https://www.medrefer-staging.com/api/v1/referrals(.:format)
+GET ```https://www.medrefer-staging.com/api/v1/referrals(.:format)```
 
 Request
-
-curl -H "X-Auth-Token: <token>" https://www.medrefer-staging.com/api/v1/referrals
+```
+curl https://www.medrefer-staging.com/api/v1/referrals
+    -H "X-Auth-Token: <token>"
+```
 
 Response
-
+```
   [
       {
           "id": 1,
@@ -43,25 +45,27 @@ Response
       },
       { … }
   ]
+```
 
 
-
-## summary
-* url: /api/v1/referrals/:code/summary(.:format)
+## Summary
+* url: ```/api/v1/referrals/:code/summary(.:format)```
 * method: get
 
 no parameters, provide the code of the referral to get the summary for as a part of the url.
 
 URL
 
-GET https://www.medrefer-staging.com/api/v1/referrals/:code/summary(.:format)
+GET ```https://www.medrefer-staging.com/api/v1/referrals/:code/summary(.:format)```
 
 Request
-
-curl -H "X-Auth-Token: <token>" https://www.medrefer-staging.com/api/v1/referrals/1YY-DS1/summary
+```
+curl https://www.medrefer-staging.com/api/v1/referrals/1YY-DS1/summary
+    -H "X-Auth-Token: <token>"
+```
 
 Response
-
+```
   {
       "id": 1,
       "code": "1YY-DS1",
@@ -85,25 +89,28 @@ Response
           }
       }
   }
+```
 
 
-
-## show
-* url: /api/v1/referrals/:code(.:format)
+## Show
+* url: ```/api/v1/referrals/:code(.:format)```
 * method: get
 
 params - none - use the code that is a part of the url.
 
 URL
-
+```
 GET https://www.medrefer-staging.com/api/v1/referrals/:code(.:format)
+```
 
 Request
-
-curl -H "X-Auth-Token: <token>" https://www.medrefer-staging.com/api/v1/referrals/1YY-DS1
+```
+curl https://www.medrefer-staging.com/api/v1/referrals/1YY-DS1
+    -H "X-Auth-Token: <token>"
+```
 
 Response
-
+```
   {
       "id": 1,
       "code": "1YY-DS1",
@@ -154,9 +161,10 @@ Response
           }
       }
   }
+```
 
-## accept
-* url: /api/v1/referrals/accept(.:format)
+## Accept
+* url: ```/api/v1/referrals/accept(.:format)```
 * method: put
 
 params:
@@ -177,17 +185,19 @@ appointment_on	required	DateTime	ISO 8601 compliant date and time for the appoin
 availability	optional	DateTime	ISO 8601 compliant date and time of practitioners next availability
 URL
 
-PUT https://www.medrefer-staging.com/api/v1/referrals/accept(.:format)
+PUT ```https://www.medrefer-staging.com/api/v1/referrals/accept(.:format)```
 
 Request
-
+```
 curl https://www.medrefer-staging.com/api/v1/referrals/accept \
      -H "X-Auth-Token: <token>" \
      -H "Content-Type: application/json" \
      -X PUT
      -d '{ "code:" "1YY-DS1", "appointment_on": "2012/10/15 01:04:27 +0000" }'
+```
 Response
 
+```
   {
       "id": 1,
       "code": "1YY-DS1",
@@ -238,10 +248,10 @@ Response
           }
       }
   }
+```
 
-
-## create
-* url: /api/v1/referrals(.:format)
+## Create
+* url: ```/api/v1/referrals(.:format)```
 * method: post
 
 params:
@@ -279,17 +289,18 @@ mobile	optional	String	Patients mobile phone number
 phone	optional	String	Patients phone number
 URL
 
-POST https://www.medrefer-staging.com/api/v1/referrals(.:format)
+POST ```https://www.medrefer-staging.com/api/v1/referrals(.:format)```
 
 Request
-
+```
   curl https://www.medrefer-staging.com/api/v1/referrals \
       -H "X-Auth-Token: <token>" \
       -H "Content-Type: application/json" \
       -X POST \
       -d '{ "first_name": "Bob", "last_name": "Smith", "summary": "Summary of the referral", "details": "Additional information can be added here", "practitioners": [2, 3] }'
+```
 Response
-
+```
 {
 
 "id": 19,
@@ -331,4 +342,4 @@ Response
 },
 "accepted_by": null
 }
-
+```

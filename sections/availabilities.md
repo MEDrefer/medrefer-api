@@ -1,8 +1,8 @@
 # Availabilities
 This endpoint allows you to set the availability of a practitioner in their practice.
 
-## update
-* url: /api/v1/availability(.:format)
+## Update
+* url: ```/api/v1/availability(.:format)```
 * method: put
 
 params:
@@ -18,17 +18,19 @@ Parameters
 next_available	required	DateTime	ISO 8601 compatible date and time for the practitioners next availability
 URL
 
-PUT https://www.medrefer-staging.com/api/v1/availability(.:format)
+PUT ```https://www.medrefer-staging.com/api/v1/availability(.:format)```
 
 Request
-
+```
 curl https://www.medrefer-staging.com/api/v1/availability \
      -H "X-Auth-Token: <token>" \
      -H "Content-Type: application/json" \
      -X PUT \
      -d '{ "next_available": "2100/12/21 10:00 +0000" }'
-Response
+```
 
+Response
+```
 {
     "id": 2,
     "title": "Dr",
@@ -63,4 +65,4 @@ Response
         "latitude": -27.561028
     }
 }
-
+```
