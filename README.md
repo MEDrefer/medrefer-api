@@ -20,7 +20,7 @@ Overview
 
 All requests are transmitted via HTTPS.
 
-The API is REST based, and returns JSON (or optionally XML) in its responses.
+The API is REST based, and returns JSON in its responses.
 
 This allows any HTTP client to interact with the MEDrefer application.
 
