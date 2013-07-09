@@ -27,11 +27,15 @@ This message will json content of the form:
 Validation errors will return an array of errors. JSON representations of the errors follow.  Errors will either list:
 
 1. a basic message description of the error
+
 ```
 {"errors": [{"message": "Practitioner already exists"}]}
 ```
+
 2. a more sophisticated error message - where the sophisticated message will have a resource, field, and code.
+
 ```
 {"errors": [{"resource": "practitioner", "field": "first_name", "code": "missing_field"}]}
 ```
+
  The sophisticated message approach will be used on all the required fields (as per the sections documents).
