@@ -1,41 +1,76 @@
-# Errors
+# Response Codes & Errors
+The MEDrefer API returns one of the following HTTP status codes for every
+request.
 
-There are a number of different errors that can occur when interacting with the MEDrefer APIs.
+## 200 - OK
+The request was processed successfully, any information is returned in the body.
 
-At the current point in time each of these produce slightly different error messages.
+## 201 - Created
+The request was processed successfully. The resource was created and the
+`Location` response header points to this resource, as does the `self` link in
+the body. This code is only returned after POST request.
 
-## Authentication errors
+## 400 - Bad Request
+The request could not be parsed or the parameters were invalid. The request
+should be modified before resubmitting. Additional information will be in the
+body of the response.
 
-In a situation where the user is not logged in, the server will first send a response with the status:
+## 401 - Unauthorized
+The request was missing or had incorrect authentication credentials.
 
-401 Unauthorized, and a WWW-Authenticate header to request the users login.
+## 402 - Payment Required
+The requested operation requires payment. The response body will include
+additional information.
 
-This message will have the json content of:
-```
-{"error":"To continue, please sign in or sign up."}
-```
+## 403 - Forbidden
+The request is understood, but it has been refused or access is not allowed. The
+body of the response will contain an error message.
 
-If the browser agent does not respond to authentication request, a subsequent response with a http 401 unauthorized status code will be sent.
+## 404 - Not Found
+The request refers to a resource that does not exist.
 
-This message will json content of the form:
-```
-{"errors": [{"message": "Practitioner authentication token not provided or invalid"}]}
-```
+## 409 - Conflict
+The request was understood, but the resource already exists. The request should
+be modified before resubmitting or the existing resource located.
 
-## Validation Errors
+## 410 - Gone
+This resource is gone. Used to indicate that an API endpoint has been turned
+off. The body of the response will contain a message with more information.
 
-Validation errors will return an array of errors. JSON representations of the errors follow.  Errors will either list:
+## 500 - Internal Server Error
+Something is broken. MEDrefer will automatically be notified when this response
+code is returned, however you can contact support if you would like more
+assistance.
 
-1. a basic message description of the error
+## 503 - Service Unavailable
+This response will occur when the API is in maintenance mode. The API should be
+available again shortly, so it is advised that you resubmit your request later.
 
-```
-{"errors": [{"message": "Practitioner already exists"}]}
-```
+## 504 - Gateway timeout
+If your request could not be completed in 30 seconds of less you will see this
+response.
 
-2. a more sophisticated error message - where the sophisticated message will have a resource, field, and code.
+# Error Message Structure
+The API reports errors in JSON which makes it easier to parse and evaluate them.
+There are currently two kinds of errors: `params` and `request`
 
-```
-{"errors": [{"resource": "practitioner", "field": "first_name", "code": "missing_field"}]}
-```
+An example of `params` related errors:
 
- The sophisticated message approach will be used on all the required fields (as per the sections documents).
+    {
+      "errors": {
+        "params": {
+          "id": ["is not a number"],
+          "first_name": ["is not present"]
+        }
+      }
+    }
+
+An example of `request` related errors:
+
+    {
+      "errors": {
+        "request": {
+          "Please provide credentials for authentication."
+        }
+      }
+    }
