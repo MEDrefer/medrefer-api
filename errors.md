@@ -49,10 +49,10 @@ Validation errors will return an array of errors. JSON representations of the er
 2. a more sophisticated error message - where the sophisticated message will have a resource, field, and code.
 
 ```
-{"full_message": "Practitioner first_name can\'t be blank\nPractitioner last_name can\'t be blank", 
+{"full_message": "Practitioner first_name can't be blank\nPractitioner last_name can't be blank", 
 "details": [
-{"resource": "practitioner",  "message": "Practitioner first_name can\'t be blank", "field": "first_name", "code": "missing_field"},
-{"resource": "practitioner",  "message": "Practitioner last_name can\'t be blank", "field": "last_name", "code": "missing_field"}]}
+{"resource": "practitioner",  "message": "Practitioner first_name can't be blank", "field": "first_name", "code": "missing_field"},
+{"resource": "practitioner",  "message": "Practitioner last_name can't be blank", "field": "last_name", "code": "missing_field"}]}
 ```
 
  The sophisticated message approach will be used on all the required fields (as per the sections documents).
