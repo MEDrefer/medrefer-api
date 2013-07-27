@@ -4,7 +4,19 @@ There are a number of different errors that can occur when interacting with the 
 
 The errors will always return a json object that includes a full_message, and an array of the details.
 
+For example:
+```
+{"full_message": "The first error message\nThe second error seperated from the first with a newline in the full_message", 
+"details": [{"message": "The first error message"}, 
+{"message": "The second error seperated from the first with a newline in the full_message"}]}
+```
 
+The messages should be suitable for display if required.  In addition the details objects may also 
+include additional attributes. These include, (but are not limited to):
+
+* resource - the business object which had the error(e.g. practitioner)
+* field - the underlying field with an error(e.g. first_name)
+* code - a code for the error(e.g. missing_field).
 
 ## Authentication errors
 
@@ -37,7 +49,10 @@ Validation errors will return an array of errors. JSON representations of the er
 2. a more sophisticated error message - where the sophisticated message will have a resource, field, and code.
 
 ```
-{"full_message": "Practitioner first_name can\'t be blank\nPractitioner last_name can\'t be blank", "details": [{"resource": "practitioner",  "message": "Practitioner first_name can\'t be blank", "field": "first_name", "code": "missing_field"}, {"resource": "practitioner",  "message": "Practitioner last_name can\'t be blank", "field": "last_name", "code": "missing_field"}]}
+{"full_message": "Practitioner first_name can\'t be blank\nPractitioner last_name can\'t be blank", 
+"details": [
+{"resource": "practitioner",  "message": "Practitioner first_name can\'t be blank", "field": "first_name", "code": "missing_field"},
+{"resource": "practitioner",  "message": "Practitioner last_name can\'t be blank", "field": "last_name", "code": "missing_field"}]}
 ```
 
  The sophisticated message approach will be used on all the required fields (as per the sections documents).
