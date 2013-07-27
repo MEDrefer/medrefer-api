@@ -75,4 +75,4 @@ Code | Status Message | Description
 404 | Not Found | The requested resource cannot be found. For example, the referral code passed in was not recognised.
 500 | Internal Server Error | Something broke. Please describe what happened in an email to support@medrefer.com.au
 
-For more information about the error messages returned with 4xx range responses, see [errors] (https://github.com/MEDrefer/medrefer-api/blob/master/errors.md)
+For more information about the error messages returned with 4xx and 500 range responses, see [errors] (https://github.com/MEDrefer/medrefer-api/blob/master/errors.md)
