@@ -7,31 +7,22 @@ These endpoints allow you to interact with Practitioners.
 * [Return Your Record] (#return-your-information)
 
 ## Show
-* url: ```/api/v1/practitioners/:id(.:format)```
-(where url is the integer id of the practitioner that has been created).
-* method: get
+* URL: ```/api/v1/practitioners/:id```
+(where :id is the integer id of the practitioner in the MEDrefer database).
+* Method: GET
 
-parameters:
+### Request Parameters
+* None - the id of the practitioner to load is passed as a part of the url.
 
-none - the id of the practitioner to load is passed as a part of the url.
-
-URL
-
-`GET https://www.medrefer-staging.com/api/v1/practitioners/:id(.:format)`
-
-Request
-
-curl -H "X-Auth-Token: <token>" https://www.medrefer-staging.com/api/v1/practitioners/1
-
-Response
+### Response
 ```
   {
       "id": 1,
       "title": "Dr",
-      "first_name": "GP",
-      "last_name": "Development",
+      "first_name": "Geoff",
+      "last_name": "Green",
       "gender": "m",
-      "email": "daniel+development+gp@medrefer.com.au",
+      "email": "api-user@medrefer.com.au",
       "phone": null,
       "mobile": null,
       "registration_number": "MNA0876",
@@ -42,15 +33,13 @@ Response
   }
 ```
 
-
-
 ## Create
-* url: ```/api/v1/practitioners(.:format)```
-* method: post
+* URL: ```/api/v1/practitioners```
+* Method: POST
 
-parameters:
+### Request Parameters
 
-required:
+Required:
 
 * first_name String
 * last_name String
@@ -61,14 +50,14 @@ required:
 * accept_terms_at Date
 * practice_id Integer
 
-optional:
+Optional:
 
 * languages - array of languages - specified as: [{name: "Language Name"}, {name: "Another language"}]
 * disciplines - array of disciplines - specified as: [{name: "Discipline Name"}, {name: "Another Discipline"}]
 * ??? languages and disciplines are supported in the api, but requires languages and disciplines to be loaded
  in the database first. Perhaps it should be an undocumented feature ??
 * hpi_i String
-* interests String a comma seperated list of interests
+* interests String - a comma separated list of interests
 * mobile String
 * phone String
 * registering_body String
@@ -77,32 +66,12 @@ optional:
 * accept_terms_at Date
 
 
-POST `/api/v1/practitioners`
+### Response
 
-Headers
-X-App-Auth-Token - required
-X-Auth-Token - not required
-
-Parameters
-email - required
-first_name - required
-gender - required
-hpi_i - optional
-interests - optional
-last_name - required
-mobile - optional
-phone - optional
-practice_id - required
-practitioner_type - required (Valid options: 1 - 3 1=GP, 2=SP, 3=AH)
-registering_body - optional
-registration_number - optional
-title - optional
-
-Response
 ```
 {
     "auth_token": "cecdcefbbbbe9429a55876000aa0591b",
-    "email": "daniel+marcho@medrefer.com.au",
+    "email": "api-user@medrefer.com.au",
     "first_name": "Marcho",
     "gender": "M",
     "hpi_i": null,
@@ -153,44 +122,19 @@ Response when passing an email address which is already in the system
 
 ## Search
 
-params:
+### Request Parameters
 
-required:
+Required:
 
-* criteria String
-* near String containing postcode and suburb. Seperated by postcode and suburb.
+* criteria String - the search terms e.g. practitioner name, practice name, discipline, special interest
+* near String containing postcode and/or suburb, separated by a comma
 
-optional:
+Optional:
 
-* within integer
+* within integer - Distance in km from postcode provided in "near" parameter, valid distances: 5, 25 (default), 50, 100, 250
 * gender character (m|f)
-* telehealth boolean
-* intermediate boolean
 
-
-Parameters
-
-criteria	required	String	Search tearms
-near	required	String	Can be just a postcode or suburb + postcode in the format ", "
-within	optional	Integer	Distance from postcode provided to search for practitioners, valid distances: 5, 25 (default), 50, 100, 250
-gender	optional	String	M or F
-telehealth	optional	Boolean	true or false (default)
-intermediate	optional	Boolean	true or false (default)
-
-URL
-
-GET https://www.medrefer-staging.com/api/v1/practitioners/search(.:format)
-
-Request
-```
-curl https://www.medrefer-staging.com/api/v1/practitioners/search \
-     -H "X-Auth-Token: <token>" \
-     -H "Content-Type: application/json" \
-     -X GET
-     -d '{ "criteria": "physio", "near": "Brisbane, 4000" }'
-```
-
-Response
+### Response
 ```
   [
     {
@@ -222,19 +166,12 @@ Response
 ]
 ```
 
-## Return your information
+## Return Your Record
 
-URL
+URL: ```https://www.medrefer-staging.com/api/v1/practitioners/me ```
+Method: GET
 
-GET ```https://www.medrefer-staging.com/api/v1/practitioners/me(.:format) ```
-
-Request
-```
-curl https://www.medrefer-staging.com/api/v1/practitioners/me
-    -H "X-Auth-Token: <token>"
-```
-
-Response
+### Response
 ```
   {
       "id": 1,
@@ -242,8 +179,8 @@ Response
       "first_name": "GP",
       "last_name": "Development",
       "gender": "m",
-      "email": "daniel+development+gp@medrefer.com.au",
       "phone": null,
+      "email": "api-user@medrefer.com.au",
       "mobile": null,
       "registration_number": "MNA0876",
       "registering_body": "AHPRA",

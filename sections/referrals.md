@@ -1,23 +1,18 @@
 # Referrals
 
 ## Index
-* url: ```/api/v1/referrals```
-* method: get
+* URL: ```/api/v1/referrals```
+* Method: GET
 
-No parameters - returns the list of referrals for the currently logged in practitioner.
-* updated_since
+### Request Parameters
 
-URL
+Required:
+* None - returns the list of referrals for the authenticated practitioner.
 
-GET ```https://www.medrefer-staging.com/api/v1/referrals(.:format)```
+Optional:
+* updated_since Date - if passed, only results that were updated since will be returned.
 
-Request
-```
-curl https://www.medrefer-staging.com/api/v1/referrals
-    -H "X-Auth-Token: <token>"
-```
-
-Response
+### Response
 ```
   [
       {
@@ -49,22 +44,14 @@ Response
 
 
 ## Summary
-* url: ```/api/v1/referrals/:code/summary(.:format)```
-* method: get
+* URL: ```/api/v1/referrals/:code/summary```
+* Method: GET
 
-no parameters, provide the code of the referral to get the summary for as a part of the url.
+### Request Parameters
+No parameters, provide the code of the referral to get the summary for as a part of the url.
 
-URL
 
-GET ```https://www.medrefer-staging.com/api/v1/referrals/:code/summary(.:format)```
-
-Request
-```
-curl https://www.medrefer-staging.com/api/v1/referrals/1YY-DS1/summary
-    -H "X-Auth-Token: <token>"
-```
-
-Response
+### Response
 ```
   {
       "id": 1,
@@ -93,23 +80,13 @@ Response
 
 
 ## Show
-* url: ```/api/v1/referrals/:code(.:format)```
-* method: get
+* URL: ```/api/v1/referrals/:code```
+* Method: GET
 
-params - none - use the code that is a part of the url.
+### Request Parameters
+* None - use the code that is a part of the url.
 
-URL
-```
-GET https://www.medrefer-staging.com/api/v1/referrals/:code(.:format)
-```
-
-Request
-```
-curl https://www.medrefer-staging.com/api/v1/referrals/1YY-DS1
-    -H "X-Auth-Token: <token>"
-```
-
-Response
+### Response
 ```
   {
       "id": 1,
@@ -164,38 +141,21 @@ Response
 ```
 
 ## Accept
-* url: ```/api/v1/referrals/accept(.:format)```
-* method: put
+* URL: ```/api/v1/referrals/accept```
+* Method: PUT
 
-params:
+### Request Parameters
 
-required:
+Required:
 
-* code string
-* appointment_on date
+* code string - the referral code as shown on the patient's referral certificate (not the referral ID)
+* appointment_on date - the date and time of the appointment the patient is booked in for
 
-optional:
+Optional:
 
-* availability date
+* availability date - the next date the practitioner has an available appointment
 
-Parameters
-
-code	required	String	Referral code not the referral ID
-appointment_on	required	DateTime	ISO 8601 compliant date and time for the appointment booking
-availability	optional	DateTime	ISO 8601 compliant date and time of practitioners next availability
-URL
-
-PUT ```https://www.medrefer-staging.com/api/v1/referrals/accept(.:format)```
-
-Request
-```
-curl https://www.medrefer-staging.com/api/v1/referrals/accept \
-     -H "X-Auth-Token: <token>" \
-     -H "Content-Type: application/json" \
-     -X PUT
-     -d '{ "code:" "1YY-DS1", "appointment_on": "2012/10/15 01:04:27 +0000" }'
-```
-Response
+### Response
 
 ```
   {
@@ -251,20 +211,20 @@ Response
 ```
 
 ## Create
-* url: ```/api/v1/referrals(.:format)```
-* method: post
+* URL: ```/api/v1/referrals```
+* Method: POST
 
-params:
+### Request Parameters
 
-required:
+Required:
 
 * first_name String
 * last_name String
-* summary String
-* details String
-* practitioners array of integer ids that can respond to the referral
+* summary String - Summary of referral for use by the accepting specialist to assess whether the referral is appropriate for them
+* details String - The body of the referral letter
+* practitioners array of integer practitioner ids that can accept the referral
 
-optional:
+Optional:
 
 * date_birth Date
 * medicare String
@@ -274,32 +234,7 @@ optional:
 * phone String
 
 
-Parameters
-
-first_name	required	String	Patients first name
-last_name	required	String	Patients last name
-summary	required	String	Summary of referral
-details	required	String	Full referral information
-practitioners	required	Array[Integer]	List of practitioner ids who can accept the referral (Can be obtained from practitioners/search)
-date_birth	optional	DateTime	Patients date of birth
-medicare	optional	String	Patients medicare number
-ihi	optional	String	Patients IHI
-email	optional	String	Patients email address
-mobile	optional	String	Patients mobile phone number
-phone	optional	String	Patients phone number
-URL
-
-POST ```https://www.medrefer-staging.com/api/v1/referrals(.:format)```
-
-Request
-```
-  curl https://www.medrefer-staging.com/api/v1/referrals \
-      -H "X-Auth-Token: <token>" \
-      -H "Content-Type: application/json" \
-      -X POST \
-      -d '{ "first_name": "Bob", "last_name": "Smith", "summary": "Summary of the referral", "details": "Additional information can be added here", "practitioners": [2, 3] }'
-```
-Response
+### Response
 ```
 {
 

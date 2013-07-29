@@ -2,47 +2,29 @@
 This endpoint allows you to set the availability of a practitioner in their practice.
 
 ## Update
-* url: ```/api/v1/availability(.:format)```
-* method: put
+* URL: ```/api/v1/availability```
+* Method: PUT
 
-params:
+### Request Parameters:
 
-required:
-
+Required:
 * next_available Date
 
-Update my availability
 
-Parameters
-
-next_available	required	DateTime	ISO 8601 compatible date and time for the practitioners next availability
-URL
-
-PUT ```https://www.medrefer-staging.com/api/v1/availability(.:format)```
-
-Request
-```
-curl https://www.medrefer-staging.com/api/v1/availability \
-     -H "X-Auth-Token: <token>" \
-     -H "Content-Type: application/json" \
-     -X PUT \
-     -d '{ "next_available": "2100/12/21 10:00 +0000" }'
-```
-
-Response
+### Response:
 ```
 {
     "id": 2,
     "title": "Dr",
-    "first_name": "Specialist",
-    "last_name": "Local",
+    "first_name": "Sam",
+    "last_name": "Surgeon",
     "gender": "m",
-    "email": "daniel+local+specialist@medrefer.com.au",
+    "email": "api-user@medrefer.com.au",
     "phone": null,
     "mobile": null,
     "registration_number": "",
     "registering_body": "AHPRA",
-    "interests": "foobar, test, beer",
+    "interests": "surgery",
     "practitioner_type": 2,
     "auth_token": "f36bfbadcb06c2d6656fc080d905bec5",
     "practice": {
@@ -60,7 +42,7 @@ Response
         "fax": "",
         "email": "",
         "website": "",
-        "next_available": "2100/12/21 10:00:00 +0000",
+        "next_available": "2013-12-21 10:00Z",
         "longitude": 151.956782,
         "latitude": -27.561028
     }
