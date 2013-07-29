@@ -6,9 +6,14 @@ The errors will always return a json object that includes a full_message, and an
 
 For example:
 ```
-{"full_message": "The first error message\nThe second error seperated from the first with a newline in the full_message", 
-"details": [{"message": "The first error message"}, 
-{"message": "The second error seperated from the first with a newline in the full_message"}]}
+{
+    "full_message": "The first error message\nThe second error separated from the first with a newline in the full_message",
+    "details":
+        [
+            {"message": "The first error message"},
+            {"message": "The second error separated from the first with a newline in the full_message"}
+        ]
+}
 ```
 
 The messages should be suitable for display if required.  In addition the details objects may also 
