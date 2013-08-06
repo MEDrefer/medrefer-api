@@ -4,7 +4,7 @@ These endpoints allow you to interact with Practitioners.
 * [Show] (#show)
 * [Create] (#create)
 * [Search] (#search)
-* [Return Your Record] (#return-your-information)
+* [Return Your Record] (#return-your-record)
 
 ## Show
 * URL: ```/api/v1/practitioners/:id```
@@ -14,23 +14,72 @@ These endpoints allow you to interact with Practitioners.
 ### Request Parameters
 * None - the id of the practitioner to load is passed as a part of the url.
 
+```
+curl https://www.medrefer.com.au/api/v1/practitioners/999
+    -X GET
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+```
+
 ### Response
 ```
-  {
-      "id": 1,
-      "title": "Dr",
-      "first_name": "Geoff",
-      "last_name": "Green",
-      "gender": "m",
-      "email": "api-user@medrefer.com.au",
-      "phone": null,
-      "mobile": null,
-      "registration_number": "MNA0876",
-      "registering_body": "AHPRA",
-      "interests": "",
-      "practitioner_type": 1,
-      "auth_token": "c08f0619ba9d1a7afc63f01b89803b52"
-  }
+{
+    "id": 123,
+    "title": "Dr",
+    "first_name": "Adam",
+    "last_name": "Thomas",
+    "gender": "m",
+    "registration_number": "-",
+    "registering_body": "AHPRA",
+    "practitioner_type": 2,
+    "practitioner_type_name": "Specialist",
+    "has_intermediate_facility": false,
+    "interests": null,
+    "telehealth": null,
+    "disciplines": [
+        {
+            "id": 12,
+            "name": "Gynaecology"
+        },
+        {
+            "id": 19,
+            "name": "Obstetrics"
+        }
+    ],
+    "languages": [],
+    "practice": {
+        "id": 123,
+        "name": null,
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000",
+        "phone": "(03) 9419 7918",
+        "next_available": null,
+        "updated_at": "2012-05-08T00:03Z",
+        "manager": null,
+        "software": null,
+        "address1": "20 Elizabeth St",
+        "address2": null,
+        "fax": null,
+        "email": null,
+        "website": null,
+        "provider_number": "-",
+        "latitude": -36.810147,
+        "longitude": 143.984329,
+        "hpi_o": null,
+        "created_at": "2012-03-09T00:23Z"
+    },
+    "email": "temp312@medrefer.com.au",
+    "phone": null,
+    "mobile": null,
+    "hpi_i": null,
+    "time_zone": "Melbourne",
+    "created_at": "2012-03-09T00:23Z",
+    "updated_at": "2013-01-22T13:34Z"
+}
+
+
 ```
 
 ## Create
@@ -65,45 +114,62 @@ Optional:
 * title String
 * accept_terms_at Date
 
+```
+curl https://www.medrefer.com.au/api/v1/practitioners
+    -X POST
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+    -d  '{ "first_name": "Don", "last_name": "Draper", "email": "dondraper@medrefer.com.au", "password": "foobar", "gender": "m", "practitioner_type": "2", "accept_terms_at": "2013-01-05T13:15:30Z", "practice_id": "13580" }'
+```
 
 ### Response
 
 ```
 {
-    "auth_token": "cecdcefbbbbe9429a55876000aa0591b",
-    "email": "api-user@medrefer.com.au",
-    "first_name": "Marcho",
-    "gender": "M",
-    "hpi_i": null,
-    "id": 13262,
+    "id": 13487,
+    "title": null,
+    "first_name": "Don",
+    "last_name": "Draper",
+    "gender": "m",
+    "registration_number": null,
+    "registering_body": null,
+    "practitioner_type": 2,
+    "practitioner_type_name": "Specialist",
+    "has_intermediate_facility": null,
     "interests": null,
-    "last_name": "Boom",
-    "mobile": null,
-    "phone": null,
+    "telehealth": null,
+    "disciplines": [],
+    "languages": [],
     "practice": {
-        "address1": "1 Foobar Street",
+        "id": 13580,
+        "name": null,
+        "city": "Paddington",
+        "state": "QLD",
+        "postcode": "4064",
+        "phone": "07 3211 1222",
+        "next_available": null,
+        "updated_at": "2013-08-06T04:29Z",
+        "manager": null,
+        "software": null,
+        "address1": "17 Tamsin Street",
         "address2": null,
-        "city": "Fooville",
-        "email": null,
         "fax": null,
-        "hpi_o": null,
-        "id": 13261,
+        "email": null,
+        "website": null,
+        "provider_number": null,
         "latitude": -27.290533,
         "longitude": 152.959125,
-        "manager": null,
-        "name": "Foobar Practice",
-        "next_available": null,
-        "phone": null,
-        "postcode": "1234",
-        "provider_number": null,
-        "software": null,
-        "state": "QLD",
-        "website": null
+        "hpi_o": null,
+        "created_at": "2013-08-06T04:18Z"
     },
-    "practitioner_type": 2,
-    "registering_body": null,
-    "registration_number": null,
-    "title": null
+    "email": "dondraper@medrefer.com.au",
+    "phone": null,
+    "mobile": null,
+    "hpi_i": null,
+    "time_zone": "Brisbane",
+    "created_at": "2013-08-06T04:29Z",
+    "updated_at": "2013-08-06T04:29Z"
 }
 ```
 
@@ -134,35 +200,101 @@ Optional:
 * within integer - Distance in km from postcode provided in "near" parameter, valid distances: 5, 25 (default), 50, 100, 250
 * gender character (m|f)
 
+```
+curl https://www.medrefer.com.au/api/v1/search
+    -X GET
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+    -d  '{ "criteria": "physio", "near": "Brisbane, 4000" }'
+```
+
 ### Response
 ```
-  [
+[
     {
-        "id": 2,
+        "id": 11197,
         "title": "Dr",
-        "first_name": "Specialist",
-        "last_name": "Local",
+        "first_name": "A",
+        "last_name": "Specialist",
+        "gender": "m",
+        "registration_number": "123sp",
+        "registering_body": "AHPRA",
+        "practitioner_type": 2,
         "practitioner_type_name": "Specialist",
+        "has_intermediate_facility": true,
+        "interests": "Matchbox Cars",
+        "telehealth": false,
+        "disciplines": [
+            {
+                "id": 22,
+                "name": "Orthopaedics"
+            },
+            {
+                "id": 31,
+                "name": "Surgery"
+            }
+        ],
+        "languages": [
+            {
+                "id": 2,
+                "name": "Cantonese"
+            },
+            {
+                "id": 17,
+                "name": "Mandarin"
+            }
+        ],
         "practice": {
-            "id": 2,
-            "name": "MEDrefer",
-            "provider_number": "123456789",
-            "hpi_o": "9876543"
-        }
+            "id": 11197,
+            "name": "A Specialist Practice",
+            "city": "Brisbane",
+            "state": "QLD",
+            "postcode": "4000",
+            "phone": "33335555",
+            "next_available": "2013-08-30T23:00Z",
+            "updated_at": "2013-08-01T02:02Z"
+        },
+        "distance": 0
     },
     {
-        "id": 3,
-        "title": "Mr",
+        "id": 13334,
+        "title": "Dr",
         "first_name": "Allied",
-        "last_name": "Local",
+        "last_name": "Warner",
+        "gender": "f",
+        "registration_number": "1234567890",
+        "registering_body": "AHPRA",
+        "practitioner_type": 3,
         "practitioner_type_name": "Allied",
+        "has_intermediate_facility": null,
+        "interests": "",
+        "telehealth": null,
+        "disciplines": [
+            {
+                "id": 52,
+                "name": "Social Worker"
+            },
+            {
+                "id": 33,
+                "name": "Aboriginal Health Worker"
+            }
+        ],
+        "languages": [],
         "practice": {
-            "id": 3,
-            "name": "MEDrefer",
-            "provider_number": "123456789-HA",
-            "hpi_o": "987654323-A1"
-        }
-    }
+            "id": 13334,
+            "name": "Brisbane Medical Clinic",
+            "city": "Brisbane",
+            "state": "QLD",
+            "postcode": "4000",
+            "phone": "61732671459",
+            "next_available": "2013-09-05T23:00Z",
+            "updated_at": "2013-08-05T12:37Z"
+        },
+        "distance": 0
+    },
+
+    {...}
 ]
 ```
 
@@ -171,21 +303,65 @@ Optional:
 URL: ```https://www.medrefer-staging.com/api/v1/practitioners/me ```
 Method: GET
 
+```
+curl https://www.medrefer.com.au/api/v1/practitioners/me
+    -X GET -u mrgp@theprogramme.com.au:mrgpgp
+    -H 'Content-Type: application/json'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+```
+
 ### Response
 ```
-  {
-      "id": 1,
-      "title": "Dr",
-      "first_name": "GP",
-      "last_name": "Development",
-      "gender": "m",
-      "phone": null,
-      "email": "api-user@medrefer.com.au",
-      "mobile": null,
-      "registration_number": "MNA0876",
-      "registering_body": "AHPRA",
-      "interests": "",
-      "practitioner_type": 1,
-      "auth_token": "c08f0619ba9d1a7afc63f01b89803b52"
-  }
+{
+    "id": 11196,
+    "title": "Dr",
+    "first_name": "A",
+    "last_name": "General",
+    "gender": "",
+    "registration_number": "123gp",
+    "registering_body": "AHPRA",
+    "practitioner_type": 1,
+    "practitioner_type_name": "General",
+    "has_intermediate_facility": false,
+    "interests": "",
+    "telehealth": false,
+    "disciplines": [],
+    "languages": [],
+    "practice": {
+        "id": 11196,
+        "name": "My Little Practice",
+        "city": "McDowall",
+        "state": "QLD",
+        "postcode": "4053",
+        "phone": "",
+        "next_available": "2013-01-05T13:15Z",
+        "updated_at": "2013-08-06T04:10Z",
+        "manager": "",
+        "software": "",
+        "address1": "678 Rode Road",
+        "address2": "",
+        "fax": "",
+        "email": "gpractice@medrefer.com.au",
+        "website": "",
+        "provider_number": "ABC123",
+        "latitude": -27.389706,
+        "longitude": 153.000214,
+        "hpi_o": "",
+        "created_at": "2012-03-09T02:17Z"
+    },
+    "email": "gp@medrefer.com.au",
+    "phone": "",
+    "mobile": "",
+    "hpi_i": "",
+    "time_zone": "Brisbane",
+    "auth_token": "94de82b2fc1ac3e06b1cd8e3eebb7fc8",
+    "credits": 0,
+    "expiry_month": null,
+    "subscription_level": 1,
+    "force_password_change": false,
+    "joined_at": "2013-07-05T00:54Z",
+    "created_at": "2012-03-09T02:16Z",
+    "updated_at": "2013-08-06T04:02Z"
+}
+
 ```

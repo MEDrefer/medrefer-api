@@ -28,30 +28,37 @@ Optional:
 * longitude float
 * hpi_o String
 
+```
+curl https://www.medrefer.com.au/api/v1/practices
+    -X POST
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+    -d  '{ "address1": "37 Tamsin Street", "city": "Paddington", "state": "QLD", "postcode": "4064", "phone": "07 3333 3333" }'
+```
+
+
 ### Response
 
 ```
 {
-    "address1": "1 Toohey Street",
-    "address2": null,
-    "city": "Fooville",
-    "created_at": "2013-12-21 10:00Z",
-    "email": null,
-    "fax": null,
-    "hpi_o": null,
-    "id": 13264,
-    "latitude": -27.290533,
-    "longitude": 152.959125,
-    "manager": null,
-    "name": "Foobar Practice",
-    "next_available": null,
-    "phone": "123456789",
-    "postcode": "1234",
-    "practitioner_id": null,
-    "provider_number": null,
-    "software": null,
+    "id": 13580,
+    "name": null,
+    "city": "Paddington",
     "state": "QLD",
-    "updated_at": "2013-12-21 10:00Z",
-    "website": null
+    "postcode": "4064",
+    "phone": "07 3333 3333",
+    "next_available": null,
+    "updated_at": "2013-08-06T04:18Z",
+    "manager": null,
+    "software": null,
+    "address1": "37 Tamsin Street",
+    "address2": null,
+    "fax": null,
+    "email": null,
+    "website": null,
+    "longitude": 152.959125,
+    "latitude": -27.290533,
+    "practitioner_id": null
 }
 ```

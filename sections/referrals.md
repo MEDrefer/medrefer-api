@@ -12,34 +12,99 @@ Required:
 Optional:
 * updated_since Date - if passed, only results that were updated since will be returned.
 
+```
+curl https://www.medrefer.com.au/api/v1/referrals
+    -X GET
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+```
+
 ### Response
 ```
-  [
-      {
-          "id": 1,
-          "code": "1YY-DS1",
-          "first_name": "Donald",
-          "last_name": "Duck",
-          "summary": "Quack quack quack!",
-          "status": "accepted",
-          "accepted_on": "2012/10/11 01:04:27 +0000",
-          "appointment_on": "2012/10/10 22:00:00 +0000",
-          "issued_on": "2012/10/11 01:00:19 +0000",
-          "issued_by": {
-              "id": 1,
-              "title": "Dr",
-              "first_name": "GP",
-              "last_name": "Development",
-              "practitioner_type_name": "General",
-              "practice": {
-                  "id": 1,
-                  "name": "MEDrefer",
-                  "provider_number": "123456789-12"
-              }
-          }
-      },
-      { … }
-  ]
+[
+    {
+        "id": 3,
+        "code": "1YY-DS3",
+        "first_name": "Christian",
+        "last_name": "Tester",
+        "date_birth": "1970-12-12",
+        "summary": "[TEST REFERRAL ONLY] Pathology suggests potential Hypothyroidism. Further investigation required.",
+        "accepted_on": null,
+        "appointment_on": null,
+        "updated_at": "2012-09-10T01:46Z",
+        "issued_on": "2012-09-10T01:46Z",
+        "status": "Issued",
+        "issued_by": {
+            "id": 11196,
+            "title": "Dr",
+            "first_name": "A",
+            "last_name": "General",
+            "gender": "",
+            "registration_number": "123gp",
+            "registering_body": "AHPRA",
+            "practitioner_type": 1,
+            "practitioner_type_name": "General",
+            "has_intermediate_facility": false,
+            "interests": "",
+            "telehealth": false,
+            "disciplines": [],
+            "languages": [],
+            "practice": {
+                "id": 11196,
+                "name": "My Little Practice",
+                "city": "McDowall",
+                "state": "QLD",
+                "postcode": "4053",
+                "phone": "",
+                "next_available": "2013-01-05T13:15Z",
+                "updated_at": "2013-08-06T04:10Z"
+            }
+        },
+        "accepted_by": null
+    },
+    {
+        "id": 8,
+        "code": "1YY-DS8",
+        "first_name": "Christian",
+        "last_name": "V",
+        "date_birth": null,
+        "summary": "Test referral only - please ignore",
+        "accepted_on": null,
+        "appointment_on": null,
+        "updated_at": "2012-09-17T09:13Z",
+        "issued_on": "2012-09-17T09:12Z",
+        "status": "Issued",
+        "issued_by": {
+            "id": 11196,
+            "title": "Dr",
+            "first_name": "A",
+            "last_name": "General",
+            "gender": "",
+            "registration_number": "123gp",
+            "registering_body": "AHPRA",
+            "practitioner_type": 1,
+            "practitioner_type_name": "General",
+            "has_intermediate_facility": false,
+            "interests": "",
+            "telehealth": false,
+            "disciplines": [],
+            "languages": [],
+            "practice": {
+                "id": 11196,
+                "name": "My Little Practice",
+                "city": "McDowall",
+                "state": "QLD",
+                "postcode": "4053",
+                "phone": "",
+                "next_available": "2013-01-05T13:15Z",
+                "updated_at": "2013-08-06T04:10Z"
+            }
+        },
+        "accepted_by": null
+    },
+    { ... }
+]
 ```
 
 
@@ -50,32 +115,56 @@ Optional:
 ### Request Parameters
 No parameters, provide the code of the referral to get the summary for as a part of the url.
 
+```
+curl https://www.medrefer.com.au/api/v1/referrals/ABC-123/summary
+    -X GET
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+```
 
 ### Response
 ```
-  {
-      "id": 1,
-      "code": "1YY-DS1",
-      "first_name": "Donald",
-      "last_name": "Duck",
-      "summary": "Quack quack quack!",
-      "status": "accepted",
-      "accepted_on": "2012/10/11 01:04:27 +0000",
-      "appointment_on": "2012/10/10 22:00:00 +0000",
-      "issued_on": "2012/10/11 01:00:19 +0000",
-      "issued_by": {
-          "id": 1,
-          "title": "Dr",
-          "first_name": "GP",
-          "last_name": "Development",
-          "practitioner_type_name": "General",
-          "practice": {
-              "id": 1,
-              "name": "MEDrefer",
-              "provider_number": "123456789-12"
-          }
-      }
-  }
+{
+    "id": 463,
+    "code": "1YY-E7F",
+    "first_name": "Buzz",
+    "last_name": "Lightyear",
+    "date_birth": null,
+    "summary": "To infinity and beyond!",
+    "accepted_on": null,
+    "appointment_on": null,
+    "updated_at": "2013-08-06T04:41Z",
+    "issued_on": "2013-08-06T04:41Z",
+    "status": "issued",
+    "issued_by": {
+        "id": 11196,
+        "title": "Dr",
+        "first_name": "A",
+        "last_name": "General",
+        "gender": "",
+        "registration_number": "123gp",
+        "registering_body": "AHPRA",
+        "practitioner_type": 1,
+        "practitioner_type_name": "General",
+        "has_intermediate_facility": false,
+        "interests": "",
+        "telehealth": false,
+        "disciplines": [],
+        "languages": [],
+        "practice": {
+            "id": 11196,
+            "name": "My Little Practice",
+            "city": "McDowall",
+            "state": "QLD",
+            "postcode": "4053",
+            "phone": "",
+            "next_available": "2013-01-05T13:15Z",
+            "updated_at": "2013-08-06T04:10Z"
+        }
+    },
+    "accepted_by": null
+}
 ```
 
 
@@ -86,58 +175,102 @@ No parameters, provide the code of the referral to get the summary for as a part
 ### Request Parameters
 * None - use the code that is a part of the url.
 
+```
+curl https://www.medrefer.com.au/api/v1/referrals/ABC-123
+    -X GET
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+```
+
 ### Response
 ```
-  {
-      "id": 1,
-      "code": "1YY-DS1",
-      "first_name": "John",
-      "last_name": "Smith",
-      "summary": "Referral Summary Goes Here...",
-      "accepted_on": "2012/10/23 03:20:28 +0000",
-      "appointment_on": "2100/12/21 10:00:00 +0000",
-      "issued_on": "2012/10/01 23:08:31 +0000",
-      "status": "accepted",
-      "issued_by": {
-          "id": 1,
-          "title": "Dr",
-          "first_name": "GP",
-          "last_name": "Local",
-          "practitioner_type_name": "General",
-          "practice": {
-              "id": 1,
-              "name": "MEDrefer",
-              "provider_number": "123456789"
-          }
-      },
-      "date_birth": null,
-      "medicare": "",
-      "ihi": "",
-      "email": "",
-      "phone": "",
-      "mobile": "",
-      "details": "# Something is wrong with John\r\nThis dude rocked up and had a red rash\r\n\r\nHad a look and wasn't able to figure out what it was so referred him\r\n\r\n\r\nCheers\r\nBill",
-      "report": null,
-      "reversed_reason": null,
-      "reversed_on": null,
-      "closed_reason": null,
-      "closed_on": null,
-      "urls": {
-          "self": "http://localhost:3000/referrals/1"
-      },
-      "accepted_by": {
-          "id": 2,
-          "title": "Dr",
-          "first_name": "Specialist",
-          "last_name": "Local",
-          "practitioner_type_name": "Specialist",
-          "practice": {
-              "id": 2,
-              "name": "MEDrefer",
-              "provider_number": "123456789"
-          }
-      }
-  }
+{
+    "id": 463,
+    "code": "1YY-E7F",
+    "first_name": "Buzz",
+    "last_name": "Lightyear",
+    "date_birth": null,
+    "summary": "To infinity and beyond!",
+    "accepted_on": null,
+    "appointment_on": null,
+    "updated_at": "2013-08-06T04:41Z",
+    "issued_on": "2013-08-06T04:41Z",
+    "status": "issued",
+    "issued_by": {
+        "id": 11196,
+        "title": "Dr",
+        "first_name": "A",
+        "last_name": "General",
+        "gender": "",
+        "registration_number": "123gp",
+        "registering_body": "AHPRA",
+        "practitioner_type": 1,
+        "practitioner_type_name": "General",
+        "has_intermediate_facility": false,
+        "interests": "",
+        "telehealth": false,
+        "disciplines": [],
+        "languages": [],
+        "practice": {
+            "id": 11196,
+            "name": "My Little Practice",
+            "city": "McDowall",
+            "state": "QLD",
+            "postcode": "4053",
+            "phone": "",
+            "next_available": "2013-01-05T13:15Z",
+            "updated_at": "2013-08-06T04:10Z",
+            "manager": "",
+            "software": "",
+            "address1": "678 Rode Road",
+            "address2": "",
+            "fax": "",
+            "email": "gpractice@medrefer.com.au",
+            "website": "",
+            "provider_number": "ABC123",
+            "latitude": -28.389706,
+            "longitude": 152.000214,
+            "hpi_o": "",
+            "created_at": "2012-03-09T02:17Z"
+        },
+        "email": "gp@medrefer.com.au",
+        "phone": "",
+        "mobile": "",
+        "hpi_i": "",
+        "time_zone": "Brisbane",
+        "created_at": "2012-03-09T02:16Z",
+        "updated_at": "2013-08-06T04:02Z"
+    },
+    "accepted_by": null,
+    "medicare": null,
+    "ihi": null,
+    "email": null,
+    "phone": null,
+    "mobile": null,
+    "details": "Not today, Zurg!",
+    "report": null,
+    "reversed_reason": null,
+    "closed_reason": null,
+    "created_by_application_id": 4,
+    "reported_at": null,
+    "reversed_on": null,
+    "closed_on": null,
+    "links": [
+        {
+            "name": "self",
+            "url": "https://www.medrefer.com.au/referrals/463"
+        },
+        {
+            "name": "certificate",
+            "url": "https://www.medrefer.com.au/api/v1/referrals/1YY-E7F/certificate.pdf"
+        },
+        {
+            "name": "report",
+            "url": "https://www.medrefer.com.au/api/v1/referrals/1YY-E7F/report.pdf"
+        }
+    ]
+}
 ```
 
 ## Accept
@@ -155,59 +288,104 @@ Optional:
 
 * availability date - the next date the practitioner has an available appointment
 
+```
+curl https://www.medrefer.com.au/api/v1/referrals/accept
+    -X PUT
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+    -d  '{ "code": "1YY-E7F", "appointment_on": "2013-08-06T04:41Z" }'
+```
+
 ### Response
 
 ```
-  {
-      "id": 1,
-      "code": "1YY-DS1",
-      "first_name": "John",
-      "last_name": "Smith",
-      "summary": "Referral Summary Goes Here...",
-      "accepted_on": "2012/10/23 03:20:28 +0000",
-      "appointment_on": "2100/12/21 10:00:00 +0000",
-      "issued_on": "2012/10/01 23:08:31 +0000",
-      "status": "accepted",
-      "issued_by": {
-          "id": 1,
-          "title": "Dr",
-          "first_name": "GP",
-          "last_name": "Local",
-          "practitioner_type_name": "General",
-          "practice": {
-              "id": 1,
-              "name": "MEDrefer",
-              "provider_number": "123456789"
-          }
-      },
-      "date_birth": null,
-      "medicare": "",
-      "ihi": "",
-      "email": "",
-      "phone": "",
-      "mobile": "",
-      "details": "# Something is wrong with John\r\nThis dude rocked up and had a red rash\r\n\r\nHad a look and wasn't able to figure out what it was so referred him\r\n\r\n\r\nCheers\r\nBill",
-      "report": null,
-      "reversed_reason": null,
-      "reversed_on": null,
-      "closed_reason": null,
-      "closed_on": null,
-      "urls": {
-          "self": "http://localhost:3000/referrals/1"
-      },
-      "accepted_by": {
-          "id": 2,
-          "title": "Dr",
-          "first_name": "Specialist",
-          "last_name": "Local",
-          "practitioner_type_name": "Specialist",
-          "practice": {
-              "id": 2,
-              "name": "MEDrefer",
-              "provider_number": "123456789"
-          }
-      }
-  }
+{
+    "id": 463,
+    "code": "1YY-E7F",
+    "first_name": "Buzz",
+    "last_name": "Lightyear",
+    "date_birth": null,
+    "summary": "To infinity and beyond!",
+    "accepted_on": null,
+    "appointment_on": null,
+    "updated_at": "2013-08-06T04:41Z",
+    "issued_on": "2013-08-06T04:41Z",
+    "status": "issued",
+    "issued_by": {
+        "id": 11196,
+        "title": "Dr",
+        "first_name": "A",
+        "last_name": "General",
+        "gender": "",
+        "registration_number": "123gp",
+        "registering_body": "AHPRA",
+        "practitioner_type": 1,
+        "practitioner_type_name": "General",
+        "has_intermediate_facility": false,
+        "interests": "",
+        "telehealth": false,
+        "disciplines": [],
+        "languages": [],
+        "practice": {
+            "id": 11196,
+            "name": "My Little Practice",
+            "city": "McDowall",
+            "state": "QLD",
+            "postcode": "4053",
+            "phone": "",
+            "next_available": "2013-01-05T13:15Z",
+            "updated_at": "2013-08-06T04:10Z",
+            "manager": "",
+            "software": "",
+            "address1": "678 Rode Road",
+            "address2": "",
+            "fax": "",
+            "email": "gpractice@medrefer.com.au",
+            "website": "",
+            "provider_number": "ABC123",
+            "latitude": -28.389706,
+            "longitude": 152.000214,
+            "hpi_o": "",
+            "created_at": "2012-03-09T02:17Z"
+        },
+        "email": "gp@medrefer.com.au",
+        "phone": "",
+        "mobile": "",
+        "hpi_i": "",
+        "time_zone": "Brisbane",
+        "created_at": "2012-03-09T02:16Z",
+        "updated_at": "2013-08-06T04:02Z"
+    },
+    "accepted_by": null,
+    "medicare": null,
+    "ihi": null,
+    "email": null,
+    "phone": null,
+    "mobile": null,
+    "details": "Not today, Zurg!",
+    "report": null,
+    "reversed_reason": null,
+    "closed_reason": null,
+    "created_by_application_id": 4,
+    "reported_at": null,
+    "reversed_on": null,
+    "closed_on": null,
+    "links": [
+        {
+            "name": "self",
+            "url": "https://www.medrefer.com.au/referrals/463"
+        },
+        {
+            "name": "certificate",
+            "url": "https://www.medrefer.com.au/api/v1/referrals/1YY-E7F/certificate.pdf"
+        },
+        {
+            "name": "report",
+            "url": "https://www.medrefer.com.au/api/v1/referrals/1YY-E7F/report.pdf"
+        }
+    ]
+}
 ```
 
 ## Create
@@ -233,48 +411,72 @@ Optional:
 * mobile String
 * phone String
 
+```
+curl https://www.medrefer.com.au/api/v1/referrals
+    -X POST
+    -H 'Content-Type: application/json'
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
+    -H X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+    -d  '{ "first_name": "Buzz", "last_name": "Lightyear", "summary": "To infinity and beyond!", "details": "Not today, Zurg!", "practitioners": [2, 3] } '
+```
 
 ### Response
 ```
 {
-
-"id": 19,
-"code": "1YY-DSK",
-"first_name": "API",
-"last_name": "Patient",
-"summary": "Testing",
-"accepted_on": null,
-"appointment_on": null,
-"issued_on": "2012/11/12 11:58:03 +0000",
-"status": "Issued",
-"issued_by": {
-    "id": 1,
-    "title": "Dr",
-    "first_name": "GP",
-    "last_name": "Local",
-    "practitioner_type_name": "General",
-    "practice": {
-        "id": 1,
-        "name": "MEDrefer",
-        "provider_number": "123456789",
-        "hpi_o": "97654-ASF"
-    }
-},
-"date_birth": null,
-"medicare": null,
-"ihi": null,
-"email": null,
-"phone": null,
-"mobile": null,
-"details": "More information",
-"report": null,
-"reversed_reason": null,
-"reversed_on": null,
-"closed_reason": null,
-"closed_on": null,
-"urls": {
-    "self": "http://localhost:3000/referrals/19"
-},
-"accepted_by": null
+    "id": 463,
+    "code": "1YY-E7F",
+    "first_name": "Buzz",
+    "last_name": "Lightyear",
+    "date_birth": null,
+    "summary": "To infinity and beyond!",
+    "accepted_on": null,
+    "appointment_on": null,
+    "updated_at": "2013-08-06T04:41Z",
+    "issued_on": "2013-08-06T04:41Z",
+    "status": "issued",
+    "issued_by": {
+        "id": 11196,
+        "title": "Dr",
+        "first_name": "A",
+        "last_name": "General",
+        "gender": "",
+        "registration_number": "123gp",
+        "registering_body": "AHPRA",
+        "practitioner_type": 1,
+        "practitioner_type_name": "General",
+        "has_intermediate_facility": false,
+        "interests": "",
+        "telehealth": false,
+        "disciplines": [],
+        "languages": [],
+        "practice": {
+            "id": 11196,
+            "name": "My Little Practice",
+            "city": "McDowall",
+            "state": "QLD",
+            "postcode": "4053",
+            "phone": "",
+            "next_available": "2013-01-05T13:15Z",
+            "updated_at": "2013-08-06T04:10Z"
+        }
+    },
+    "accepted_by": null,
+    "medicare": null,
+    "ihi": null,
+    "email": null,
+    "phone": null,
+    "mobile": null,
+    "details": "Not today, Zurg!",
+    "report": null,
+    "reversed_reason": null,
+    "reversed_on": null,
+    "closed_reason": null,
+    "closed_on": null,
+    "links": [
+        {
+            "name": "self",
+            "url": "https://www.medrefer.com.au/referrals/463"
+        }
+    ]
 }
 ```
