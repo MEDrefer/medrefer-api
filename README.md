@@ -46,13 +46,17 @@ curl https://www.medrefer-staging.com/api/v1/practitioners/me \
 
 We also support using the header X-Auth-Token for sending the user's API Token.
 
-The user auth token should be sent with every request.
+The User Auth Token should be sent with every request.
 
-Example request:
-```shell
-curl https://www.medrefer-staging.com/api/v1/practitioners/me \
-  -H "X-Auth-Token: de536a476744200647ddcf14b891f2d0"
-```
+
+### Application Authentication Token
+
+We require that any applications that access the MEDrefer API to identify themselves by passing an Application Token via the header X-App-Auth-Token.
+
+The Application Auth Token should be sent with every request.
+
+To request an Application Auth Token for your integration, contact support@medrefer.com.au
+
 
 Response Formats
 --------

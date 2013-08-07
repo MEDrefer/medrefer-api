@@ -15,11 +15,11 @@ These endpoints allow you to interact with Practitioners.
 * None - the id of the practitioner to load is passed as a part of the url.
 
 ```
-curl https://www.medrefer.com.au/api/v1/practitioners/999
-    -X GET
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/practitioners/999 \
+    -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
 ```
 
 ### Response
@@ -103,8 +103,6 @@ Optional:
 
 * languages - array of languages - specified as: [{name: "Language Name"}, {name: "Another language"}]
 * disciplines - array of disciplines - specified as: [{name: "Discipline Name"}, {name: "Another Discipline"}]
-* ??? languages and disciplines are supported in the api, but requires languages and disciplines to be loaded
- in the database first. Perhaps it should be an undocumented feature ??
 * hpi_i String
 * interests String - a comma separated list of interests
 * mobile String
@@ -115,11 +113,11 @@ Optional:
 * accept_terms_at Date
 
 ```
-curl https://www.medrefer.com.au/api/v1/practitioners
-    -X POST
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/practitioners \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
     -d  '{ "first_name": "Don", "last_name": "Draper", "email": "dondraper@medrefer.com.au", "password": "foobar", "gender": "m", "practitioner_type": "2", "accept_terms_at": "2013-01-05T13:15:30Z", "practice_id": "13580" }'
 ```
 
@@ -173,20 +171,11 @@ curl https://www.medrefer.com.au/api/v1/practitioners
 }
 ```
 
-Errors
-Response when passing an email address which is already in the system
-```
-{
-    "errors": [
-        {
-            "message": "Practitioner already exists"
-        }
-    ]
-}
-```
-
 
 ## Search
+
+* URL: ```/api/v1/search```
+* Method: GET
 
 ### Request Parameters
 
@@ -201,11 +190,11 @@ Optional:
 * gender character (m|f)
 
 ```
-curl https://www.medrefer.com.au/api/v1/search
-    -X GET
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/search \
+    -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
     -d  '{ "criteria": "physio", "near": "Brisbane, 4000" }'
 ```
 
@@ -300,14 +289,14 @@ curl https://www.medrefer.com.au/api/v1/search
 
 ## Return Your Record
 
-URL: ```https://www.medrefer-staging.com/api/v1/practitioners/me ```
-Method: GET
+* URL: ```/api/v1/practitioners/me ```
+* Method: GET
 
 ```
-curl https://www.medrefer.com.au/api/v1/practitioners/me
-    -X GET -u mrgp@theprogramme.com.au:mrgpgp
-    -H 'Content-Type: application/json'
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/practitioners/me \
+    -X GET -u dr@medrefer.com.au:mrgpgp \
+    -H 'Content-Type: application/json' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
 ```
 
 ### Response

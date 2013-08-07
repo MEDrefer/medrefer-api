@@ -13,11 +13,11 @@ Optional:
 * updated_since Date - if passed, only results that were updated since will be returned.
 
 ```
-curl https://www.medrefer.com.au/api/v1/referrals
-    -X GET
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/referrals \
+    -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
 ```
 
 ### Response
@@ -116,11 +116,11 @@ curl https://www.medrefer.com.au/api/v1/referrals
 No parameters, provide the code of the referral to get the summary for as a part of the url.
 
 ```
-curl https://www.medrefer.com.au/api/v1/referrals/ABC-123/summary
-    -X GET
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/referrals/ABC-123/summary \
+    -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
 ```
 
 ### Response
@@ -176,11 +176,11 @@ curl https://www.medrefer.com.au/api/v1/referrals/ABC-123/summary
 * None - use the code that is a part of the url.
 
 ```
-curl https://www.medrefer.com.au/api/v1/referrals/ABC-123
-    -X GET
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/referrals/ABC-123 \
+    -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
 ```
 
 ### Response
@@ -289,11 +289,11 @@ Optional:
 * availability date - the next date the practitioner has an available appointment
 
 ```
-curl https://www.medrefer.com.au/api/v1/referrals/accept
-    -X PUT
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/referrals/accept \
+    -X PUT \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
     -d  '{ "code": "1YY-E7F", "appointment_on": "2013-08-06T04:41Z" }'
 ```
 
@@ -412,11 +412,11 @@ Optional:
 * phone String
 
 ```
-curl https://www.medrefer.com.au/api/v1/referrals
-    -X POST
-    -H 'Content-Type: application/json'
-    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767'
-    -H X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+curl https://www.medrefer.com.au/api/v1/referrals \
+    -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
     -d  '{ "first_name": "Buzz", "last_name": "Lightyear", "summary": "To infinity and beyond!", "details": "Not today, Zurg!", "practitioners": [2, 3] } '
 ```
 
