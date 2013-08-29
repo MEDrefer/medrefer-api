@@ -7,7 +7,7 @@ These endpoints allow you to interact with Practitioners.
 * [Return Your Record] (#return-your-record)
 
 ## Show
-* URL: ```/api/v1/practitioners/:id```
+* URL: ```/api/v1/practitioner_site/:id```
 (where :id is the integer id of the practitioner in the MEDrefer database).
 * Method: GET
 
@@ -15,12 +15,15 @@ These endpoints allow you to interact with Practitioners.
 * None - the id of the practitioner to load is passed as a part of the url.
 
 ```
-curl https://www.medrefer.com.au/api/v1/practitioners/999 \
+curl https://www.medrefer.com.au/api/v1/practitioner_site/:id \
     -X GET \
     -H 'Content-Type: application/json' \
     -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+
 ```
+
+
 
 ### Response
 ```
@@ -174,7 +177,7 @@ curl https://www.medrefer.com.au/api/v1/practitioners \
 
 ## Search
 
-* URL: ```/api/v1/search```
+* URL: ```/api/v1/practitioner_site/search```
 * Method: GET
 
 ### Request Parameters
@@ -190,9 +193,8 @@ Optional:
 * gender character (m|f)
 
 ```
-curl https://www.medrefer.com.au/api/v1/search \
-    -X GET \
-    -H 'Content-Type: application/json' \
+curl https://www.medrefer.com.au/api/v1/practitioner_site/search \
+    -X GET -H 'Content-Type: application/json' \
     -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
     -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
     -d  '{ "criteria": "physio", "near": "Brisbane, 4000" }'
@@ -288,15 +290,19 @@ curl https://www.medrefer.com.au/api/v1/search \
 ```
 
 ## Return Your Record
+This endpoint allows you to retrieve a record simply by supplying their credentials.
+It is useful to retrieve the user authentication token to store for use in subsequent API calls.
+
 
 * URL: ```/api/v1/practitioners/me ```
 * Method: GET
 
 ```
-curl https://www.medrefer.com.au/api/v1/practitioners/me \
-    -X GET -u dr@medrefer.com.au:mrgpgp \
+curl https://www.medrefer.com.au/api/v1/session \
+    -X GET \
+    -u doctor@practice.com.au:password \
     -H 'Content-Type: application/json' \
-    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
 ```
 
 ### Response
