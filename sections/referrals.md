@@ -388,6 +388,35 @@ curl https://www.medrefer.com.au/api/v1/referrals/accept \
 }
 ```
 
+## Reverse
+* URL: ```/api/v1/referrals/reverse```
+* Method: PUT
+
+### Request Parameters
+
+Required:
+
+* code string - the referral code as shown on the patient's referral certificate (not the referral ID)
+* reason - explain reason for the referral being reversed
+
+```
+curl https://www.medrefer.com.au/api/v1/referrals/reverse \
+    -X PUT \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
+    -d  '{ "code": "1YY-E7F", "reason": "something happened" }'
+```
+
+### Response
+
+```
+{ 
+    "code": "1YY-E7F", 
+    "reason": "something happened" 
+}
+```
+
 ## Create
 * URL: ```/api/v1/referrals```
 * Method: POST
