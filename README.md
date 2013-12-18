@@ -17,6 +17,7 @@ The API documentation begins with general information:
 * [Practitioners] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/practitioners.md)
 * [Practices] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/practices.md)
 * [Referrals] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/referrals.md)
+* [Referrals/Reports] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/reports.md)
 
 
 Overview
