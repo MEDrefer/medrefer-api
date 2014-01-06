@@ -1,4 +1,12 @@
 # Referrals
+These endpoints allow you to interact the referrals
+
+* [Index] (#index)
+* [Summary] (#summary)
+* [Show] (#show)
+* [Accept] (#accept)
+* [Reverse] (#reverse)
+* [Create] (#create)
 
 ## Index
 * URL: ```/api/v1/referrals```

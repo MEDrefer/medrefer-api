@@ -294,7 +294,7 @@ This endpoint allows you to retrieve a record simply by supplying their credenti
 It is useful to retrieve the user authentication token to store for use in subsequent API calls.
 
 
-* URL: ```/api/v1/practitioners/me ```
+* URL: ```/api/v1/session/ ```
 * Method: GET
 
 ```
