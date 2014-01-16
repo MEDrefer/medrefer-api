@@ -421,7 +421,7 @@ curl https://www.medrefer.com.au/api/v1/referrals/reverse \
 ```
 { 
     "code": "1YY-E7F", 
-    "reason": "something happened" 
+    "reversed_reason": "something happened"
 }
 ```
 
