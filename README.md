@@ -35,12 +35,13 @@ Authentication
 
 While HTTP Basic Authentication is the oldest and simplest method to get started, there are a couple of things you need to remember.
 
-The user name (their email address) and password must be passed with every request. When doing so make sure you are using HTTPS since the credentials are sent as plain text.
+The user name (their email address) and password must be passed with every request. When doing so make sure you are using HTTPS since the credentials are sent as plain text. In addition we require that the application Auth token is sent with the requests (see below for more detail on this header).
 
 Example request:
 ```shell
 curl https://www.medrefer-staging.com/api/v1/practitioners/me \
-  -u user@email.com:password
+  -u user@email.com:password \
+  -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
 ```
 
 ### User Authentication Token
