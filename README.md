@@ -35,7 +35,7 @@ Authentication
 
 While HTTP Basic Authentication is the oldest and simplest method to get started, there are a couple of things you need to remember.
 
-The user name (their email address) and password must be passed with every request. When doing so make sure you are using HTTPS since the credentials are sent as plain text. In addition we require that the application Auth token is sent with the requests (see below for more detail on this header).
+The user name (their email address) and password must be passed with every request. When doing so make sure you are using HTTPS since the credentials are sent as plain text. In addition we require that the Application Auth Token is sent with the request (see below for more detail on this header).
 
 Example request:
 ```shell
