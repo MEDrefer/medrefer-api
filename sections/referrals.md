@@ -289,12 +289,12 @@ curl https://www.medrefer.com.au/api/v1/referrals/ABC-123 \
 
 Required:
 
-* code string - the referral code as shown on the patient's referral certificate (not the referral ID)
-* appointment_on date - the date and time of the appointment the patient is booked in for
+* code String - the referral code as shown on the patient's referral certificate (not the referral ID)
+* appointment_on Date - the date and time of the appointment the patient is booked in for
 
 Optional:
 
-* availability date - the next date the practitioner has an available appointment
+* availability Date - the next date the practitioner has an available appointment
 
 ```
 curl https://www.medrefer.com.au/api/v1/referrals/accept \
@@ -433,20 +433,20 @@ curl https://www.medrefer.com.au/api/v1/referrals/reverse \
 
 Required:
 
-* first_name String
-* last_name String
-* summary String - Summary of referral for use by the accepting specialist to assess whether the referral is appropriate for them
-* details String - The body of the referral letter
-* practitioners array of integer practitioner ids that can accept the referral
+* first_name String - Referred Patient's first name
+* last_name String - Referred Patient's family name
+* summary String - A short summary of the referral reason for use by the accepting specialist to assess whether the referral is appropriate for them
+* details String - The body of the referral letter, nominally formatted in HTML
+* practitioners Array - List of integer practitioner ids that can accept the referral
 
 Optional:
 
-* date_birth Date
-* medicare String
-* ihi String
-* email String
-* mobile String
-* phone String
+* date_birth Date - Referred Patient's date of birth in ISO8601 format
+* medicare String - Referred Patient's Medicare number, ending with the sequence number
+* ihi String - Referred Patient's Individual Healthcare Identifier (IHI) as issued by Medicare
+* email String - Referred Patient's email address
+* mobile String - Referred Patient's mobile telephone number
+* phone String - Referred Patient's home phone number
 
 ```
 curl https://www.medrefer.com.au/api/v1/referrals \
