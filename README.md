@@ -39,7 +39,7 @@ The user name (their email address) and password must be passed with every reque
 
 Example request:
 ```shell
-curl https://www.medrefer-staging.com/api/v1/practitioners/me \
+curl https://www.medrefer.com.au/api/v1/session \
   -u user@email.com:password \
   -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
 ```
