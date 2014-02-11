@@ -98,7 +98,7 @@ Required:
 * email String
 * password String
 * gender String (m|f)
-* practitioner_type Integer 1 GP,  2 ALLIED, 3 SPECIALIST
+* practitioner_type Integer 1 GP,  2 SPECIALIST, 3 ALLIED
 * accept_terms_at Date
 * practice_id Integer
 
