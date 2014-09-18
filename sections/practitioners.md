@@ -5,6 +5,7 @@ These endpoints allow you to interact with Practitioners.
 * [Create] (#create)
 * [Search] (#search)
 * [Return Your Record] (#return-your-record)
+* [List the practitioner sites you have access to] (#list)
 
 ## Show
 * URL: ```/api/v1/practitioner_site/:id```
@@ -358,5 +359,84 @@ curl https://www.medrefer.com.au/api/v1/session \
     "created_at": "2012-03-09T02:16Z",
     "updated_at": "2013-08-06T04:02Z"
 }
+
+```
+## List
+* URL: ```/api/v1/practitioner_sites```
+* Method: GET
+
+List the practitioner sites you have access to. Will return the details of the sites including a boolean (`current_user`) to indicate if it is the current user 
+### Request Parameters
+* None.
+
+```
+curl https://www.medrefer.com.au/api/v1/practitioner_sites \
+    -X GET \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
+
+```
+
+
+
+### Response
+```
+[{
+    "id": 123,
+    "title": "Dr",
+    "first_name": "Adam",
+    "last_name": "Thomas",
+    "gender": "m",
+    "registration_number": "-",
+    "registering_body": "AHPRA",
+    "practitioner_type": 2,
+    "practitioner_type_name": "Specialist",
+    "has_intermediate_facility": false,
+    "interests": null,
+    "telehealth": null,
+    "disciplines": [
+        {
+            "id": 12,
+            "name": "Gynaecology"
+        },
+        {
+            "id": 19,
+            "name": "Obstetrics"
+        }
+    ],
+    "languages": [],
+    "practice": {
+        "id": 123,
+        "name": null,
+        "city": "Melbourne",
+        "state": "VIC",
+        "postcode": "3000",
+        "phone": "(03) 9419 7918",
+        "next_available": null,
+        "updated_at": "2012-05-08T00:03Z",
+        "manager": null,
+        "software": null,
+        "address1": "20 Elizabeth St",
+        "address2": null,
+        "fax": null,
+        "email": null,
+        "website": null,
+        "provider_number": "-",
+        "latitude": -36.810147,
+        "longitude": 143.984329,
+        "hpi_o": null,
+        "created_at": "2012-03-09T00:23Z"
+    },
+    "email": "temp312@medrefer.com.au",
+    "phone": null,
+    "mobile": null,
+    "hpi_i": null,
+    "time_zone": "Melbourne",
+    "created_at": "2012-03-09T00:23Z",
+    "updated_at": "2013-01-22T13:34Z"
+    "current_user":true
+}]
+
 
 ```
