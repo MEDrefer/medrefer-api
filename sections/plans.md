@@ -4,7 +4,6 @@
 ```
 curl -v -x GET 'https://www.medrefer.com.au/api/v1/plans' \
   -H 'Content-Type: application/json' \
-  -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
   -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
 ```
 
@@ -32,7 +31,6 @@ curl -v -x GET 'https://www.medrefer.com.au/api/v1/plans' \
 ```
 curl -v -x GET 'https://www.medrefer.com.au/api/v1/plans/:id' \
   -H 'Content-Type: application/json' \
-  -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
   -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e'
 ```
 
