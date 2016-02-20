@@ -20,6 +20,9 @@ The API documentation begins with general information:
 * [Referrals/Reports] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/reports.md)
 * [Subscriptions] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/subscriptions.md)
 
+...additionally there is support for sending HL7 messages v2 messages, documented here:
+* [Messages] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/messages.md)
+
 
 Overview
 ----------
