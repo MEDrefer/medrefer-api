@@ -5,7 +5,7 @@ Currently the only message type supported is a referral.
 
 To use this endpoint, use application/hl7-v2+er7 Content-Type and Accept headers, and send the body as a HL7 document.
 
-The response will be a Hl7 Ack message.
+The response will be a HL7 ACK message.
 
 ## Create
 * URL: ```/api/v1/messages```
@@ -15,16 +15,17 @@ The response will be a Hl7 Ack message.
 
 An example of the request headers can be seen in the curl command below, with details in this table as well. 
 
-| Header | Values | Details |
-| Content-Type | application/hl7-v2+er7|Must set to this to specify that the uploaded body contains a HL7 v2 pipe-delimited message. |
-| Accept | application/hl7-v2+er7 | Must set this to specify that the response will be hl7 v2 pipe-delimited. |
-| X-Filename | any-valid-filename | Optional header - will be used as a filename when downloading the raw hl7. |
+Header       | Values                 | Details  
+------------ | ---------------------- | -------------
+Content-Type | application/hl7-v2+er7 | Must set to this to specify that the uploaded body contains a HL7 v2 pipe-delimited message.
+Accept       | application/hl7-v2+er7 | Must set this to specify that the response will be hl7 v2 pipe-delimited.
+X-Filename   | any-valid-filename     | Optional header - will be used as a filename when downloading the raw hl7.
 
-See auth section for details on the Auth-Token headers.
+See  [Authentication](../README.md#authentication) for details on the Auth-Token headers.
 
 ### Request Body
 
-A Hl7 v2 pipe delimited message containing at least the following segments:
+A HL7 v2 pipe delimited message containing at least the following segments:
 * MSH
 * RF1
 * PID
