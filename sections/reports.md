@@ -1,4 +1,7 @@
 # Reports
+Attaches a report to the specified Referral.
+
+The Referral can only have a single report attached to it.
 
 ## Create
 * URL: ```/api/v1/referrals/:referral_code/reports```
@@ -8,11 +11,16 @@
 
 Required:
 
-* report String - Can contain Plain Text or HTML
+* report String - Can contain Plain Text, HTML, or RTF.
 
 Optional:
 
 * reported_at DateTime
+* report_mime_type String - the mime type of the report, it needs to match the contents uploaded in the report. It must be one of:
+    * "text/html",
+    * "text/rtf", and
+    * "text/plain"
+
 
 ```
 curl http://medrefer.dev/api/v1/referrals/1YY-E7F/reports \
