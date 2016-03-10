@@ -436,7 +436,11 @@ Required:
 * first_name String - Referred Patient's first name
 * last_name String - Referred Patient's family name
 * summary String - A short summary of the referral reason for use by the accepting specialist to assess whether the referral is appropriate for them
-* details String - The body of the referral letter, nominally formatted in HTML
+* details String - The body of the referral letter, formatted in HTML, PDF or RTF.
+* details_mime_type String - the MIME type of the details, one of:
+  * text/html
+  * text/rtf
+  * text/plain
 * practitioners Array - List of integer practitioner ids that can accept the referral
 
 Optional:
