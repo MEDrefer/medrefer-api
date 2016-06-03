@@ -7,6 +7,7 @@ These endpoints allow you to interact the referrals
 * [Accept] (#accept)
 * [Reverse] (#reverse)
 * [Create] (#create)
+* [Reject] (#reject)
 
 ## Index
 * URL: ```/api/v1/referrals```
@@ -419,8 +420,8 @@ curl https://www.medrefer.com.au/api/v1/referrals/reverse \
 ### Response
 
 ```
-{ 
-    "code": "1YY-E7F", 
+{
+    "code": "1YY-E7F",
     "reversed_reason": "something happened"
 }
 ```
@@ -519,5 +520,34 @@ curl https://www.medrefer.com.au/api/v1/referrals \
             "url": "https://www.medrefer.com.au/referrals/463"
         }
     ]
+}
+```
+
+## Reject
+* URL: ```/api/v1/referrals/:code/reject```
+* Method: PUT
+
+### Request Parameters
+
+Required:
+
+* code string - the referral code as shown on the patient's referral certificate (not the referral ID)
+* reason - explain reason for the referral being rejected
+
+```
+curl https://www.medrefer.com.au/api/v1/referrals/ABC-123/reject \
+    -X PUT \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
+    -d  '{ "code": "1YY-E7F", "reason": "I don't want it!" }'
+```
+
+### Response
+
+```
+{
+    "code": "ABC-123",
+    "rejected_reason": "I don't want it!"
 }
 ```
