@@ -534,7 +534,7 @@ Required:
 * reason - explain reason for the referral being rejected
 
 ```
-curl https://www.medrefer.com.au/api/v1/referrals/ABC-123/reject \
+curl https://www.medrefer.com.au/api/v1/referrals/reject \
     -X PUT \
     -H 'Content-Type: application/json' \
     -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
