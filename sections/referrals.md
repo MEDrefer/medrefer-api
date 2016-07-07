@@ -8,6 +8,7 @@ These endpoints allow you to interact the referrals
 * [Reverse] (#reverse)
 * [Create] (#create)
 * [Reject] (#reject)
+* [Move Appointment] (#move appointment)
 
 ## Index
 * URL: ```/api/v1/referrals```
@@ -560,8 +561,7 @@ curl https://www.medrefer.com.au/api/v1/referrals/reject \
 Required:
 
 * code String - the referral code as shown on the patient's referral certificate (not the referral ID)
-* appointment_on Date - the date and time of the appointment the patient is booked in for
-* 
+* appointment_on Date - the date and time of the appointment the patient is booked in for (can't be past)
 
 ```
 curl https://www.medrefer.com.au/api/v1/referrals/appointment_on \
