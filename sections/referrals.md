@@ -550,3 +550,33 @@ curl https://www.medrefer.com.au/api/v1/referrals/reject \
     "rejected_reason": "I don't want it!"
 }
 ```
+
+## Move appointment
+* URL: ```/api/v1/referrals/move_appointment```
+* Method: PUT
+
+### Request Parameters
+
+Required:
+
+* code String - the referral code as shown on the patient's referral certificate (not the referral ID)
+* appointment_on Date - the date and time of the appointment the patient is booked in for
+* 
+
+```
+curl https://www.medrefer.com.au/api/v1/referrals/appointment_on \
+    -X PUT \
+    -H 'Content-Type: application/json' \
+    -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
+    -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
+    -d  '{ "code": "1YY-E7F", "appointment_on": "2016-05-13T20:00:00+10:00" }'
+```
+
+### Response
+
+```
+{
+    "code": "1YY-E7F",
+    "appointment_on": "2016/05/13 20:00:00 +1000\",
+}
+```
