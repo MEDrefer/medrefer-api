@@ -564,7 +564,7 @@ Required:
 * appointment_on Date - the date and time of the appointment the patient is booked in for (can't be past)
 
 ```
-curl https://www.medrefer.com.au/api/v1/referrals/appointment_on \
+curl https://www.medrefer.com.au/api/v1/referrals/move_appointment \
     -X PUT \
     -H 'Content-Type: application/json' \
     -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
