@@ -94,10 +94,11 @@ curl https://www.medrefer.com.au/api/v1/practitioner_site/:id \
 
 Required:
 
+* title string
 * first_name String
 * last_name String
 * email String
-* password String
+* password String Minimum 8 characters, with At least 1 lowercase letter, 1 uppercase letter, and 1 numerical digit
 * gender String (m|f)
 * practitioner_type Integer 1 GP,  2 SPECIALIST, 3 ALLIED
 * accept_terms_at Date
@@ -113,8 +114,8 @@ Optional:
 * phone String
 * registering_body String
 * registration_number String
-* title String
 * accept_terms_at Date
+* signature - Base64 encoded image binary , if not a png image it will be converted to one
 
 ```
 curl https://www.medrefer.com.au/api/v1/practitioners \
