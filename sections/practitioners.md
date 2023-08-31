@@ -123,7 +123,7 @@ curl https://www.medrefer.com.au/api/v1/practitioners \
     -H 'Content-Type: application/json' \
     -H 'X-Auth-Token: b273971cfcf9fdfb163bce6548c59767' \
     -H 'X-App-Auth-Token: c0c89029269325ce9498dde73292865e' \
-    -d  '{ "first_name": "Don", "last_name": "Draper", "email": "dondraper@medrefer.com.au", "password": "foobar", "gender": "m", "practitioner_type": "2", "accept_terms_at": "2013-01-05T13:15:30Z", "practice_id": "13580" }'
+    -d  '{ "title": "Dr", "first_name": "Don", "last_name": "Draper", "email": "dondraper@medrefer.com.au", "password": "Foobar000", "gender": "m", "practitioner_type": "2", "2013-01-05T13:15:30Z", "practice_id": "13580" }'
 ```
 
 ### Response
