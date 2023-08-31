@@ -1,4 +1,4 @@
-# Practitioners
+# Registration
 These endpoints allow you to register with medrefer.
 
 * [Practitioner] (#practitioner)
