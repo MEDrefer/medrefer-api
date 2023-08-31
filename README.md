@@ -19,6 +19,7 @@ The API documentation begins with general information:
 * [Referrals] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/referrals.md)
 * [Referrals/Reports] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/reports.md)
 * [Subscriptions] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/subscriptions.md)
+* [Registration] (https://github.com/MEDrefer/medrefer-api/blob/master/sections/registration.md)
 
 
 Overview
